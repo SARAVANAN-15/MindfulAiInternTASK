@@ -1,0 +1,77 @@
+
+console.log("---------------------------------------------------")
+//object creation
+
+var mobile={
+    brand:"redmi",
+    perf:"snap d",
+    battery:5000,
+    camera:50,
+    display:6.7
+}
+console.log(mobile)
+
+
+//another way
+
+
+console.log("another way of crating object");
+var laptop=new Object();
+laptop.brand="acer";
+laptop.perf="ryzen";
+laptop.graf=3050;
+console.log(laptop);
+
+console.log("---------------------------------------------------")
+//object destruction
+
+console.log("object destruction ")
+var{brand,perf,battery,camera,display}=mobile
+console.log(brand,perf);
+
+//object destruction using function
+
+console.log("object destruction using function")
+function anotherway ({brand,perf,battery,camera,display})
+{
+    console.log({battery,perf,camera });
+}
+anotherway(mobile);
+
+
+//spread operator
+console.log("---------------------------------------------------")
+console.log("spread operator");
+let a=[1,2,3,4]
+let b=[5,6,7,8]
+console.log(...a,...b)
+console.log(" copy a array using spread operator");
+let c=[...a];
+console.log(c);
+
+console.log("---------------------------------------------------");
+
+//array and its method
+
+let arr=[10,20,30,40,50]
+console.log("array values are : ",arr);
+//map 
+let res=arr.map(n=>n+2)
+console.log("after mapping : "+res);
+//reduce
+let res1=arr.reduce((total,n)=>total+n,0)
+console.log("after reduce  : "+res1);
+//filter
+let res2=arr.filter(n=>n>20)
+console.log("after filter  : "+res2);
+//find
+let res3=arr.find(n=>n>20)
+console.log("after find  : "+res3);
+//some 
+let res4=arr.some(n=>n>20)
+console.log("after some  : "+res4);
+//every
+let res5=arr.every(n=>n>10)
+console.log("after every  : "+res5);
+
+console.log("---------------------------------------------------");
