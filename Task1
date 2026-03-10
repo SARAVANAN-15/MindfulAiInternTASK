@@ -1,0 +1,50 @@
+//function declaration
+
+function add(){
+let a=10
+let b=20
+let c=a+b
+console.log("function declaration c:", c)
+}
+add()
+
+//function expression
+let addi=function sum(a,b){
+    return a+b;
+
+}
+let res=addi(30,20)
+console.log("function expression res:", res)
+
+
+//arrow function
+let sub=(a,b)=>a-b
+console.log("arrow function sub:", sub(30,20));
+
+//anonymous function
+let a=function (a,b){
+    return a*b
+}
+let res1=a(2,3)
+console.log("anonymous function res1:", res1)
+
+
+//default params
+function name(name1="saravanan",name2="kumar"){
+    console.log("default params name1:", name1)
+    console.log("default params name2:", name2)
+
+}
+name( );
+//closures
+let num1=10;
+function outer(){
+    let num=30;
+    //console.log("outer num1:", num1)
+    function inner(){
+        let num2=20;
+        console.log("closures num:", num)
+        console.log("closures num2:", num2)
+         console.log("outer num1:", num1)
+    }   inner();
+}outer();
