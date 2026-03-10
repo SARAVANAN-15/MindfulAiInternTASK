@@ -1,0 +1,147 @@
+//Call Back & Call Back Hell 
+
+function serviceEntry(callback) {
+    setTimeout(function () {
+        callback(null, `Entry registered`)
+    }, 1000);
+}
+
+function engineService(callback) {
+    setTimeout(function () {
+        callback(null, `Engine Service is done`)
+    }, 1000);
+}
+
+function wheelAlignment(callback) {
+    setTimeout(function () {
+        callback(null, `Alignment is done`)
+    }, 1000);
+}
+
+function waterService(callback) {
+    setTimeout(function () {
+        callback(null, `Water wash is done`)
+    }, 1000);
+}
+
+serviceEntry(function (error, result) {
+    if (error) {
+        console.error(error);
+    } else {
+        console.log(result);
+
+        engineService(function (error, result) {
+            if (error) {
+                console.error(error);
+            } else {
+                console.log(result);
+
+                wheelAlignment(function (error, result) {
+                    if (error) {
+                        console.error(error);
+                    } else {
+                        console.log(result);
+
+                        waterService(function (error, result) {
+                            if (error) {
+                                console.error(error);
+                            } else {
+                                console.log(result);
+                            }
+                        });
+
+                    }
+                });
+
+            }
+        });
+
+    }
+});
+console.log("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+
+//Promises
+
+function checkseat(){
+    return new Promise((resolve,reject)=>{
+ let seatava=true;
+ if(seatava){
+     console.log("Seat is Available");
+     resolve()
+ }
+ else{
+     reject("Seat Is Not Available")
+ }
+}
+)}
+
+function payment(){
+return new Promise((resolve,reject)=>{
+    let payment=true
+    if(payment){
+        console.log("paymented")
+        resolve();
+    }
+    else{
+        reject("no payment")
+    }
+}    
+)}
+function conformation(){
+    return new Promise((resolve,reject)=>{
+        console.log("ticket is booked")
+        resolve()
+    }
+)}
+checkseat()
+.then(()=>payment())
+.then(()=>conformation())
+.catch((error)=>console.log("error"))
+
+console.log("----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------");
+//Async & await Insted of Promises
+
+function checkSeat() {
+    return new Promise((resolve, reject) => {
+        let seatAvailable = true;
+
+        if (seatAvailable) {
+            console.log("Seat available");
+            resolve();
+        } else {
+            reject("Seat not available");
+        }
+    });
+}
+function payment() {
+    return new Promise((resolve, reject) => {
+        let paymentSuccess = true;
+
+        if (paymentSuccess) {
+            console.log("Payment successful");
+            resolve();
+        } else {
+            reject("Payment failed");
+        }
+    });
+}
+
+function ticketConfirm() {
+    return new Promise((resolve) => {
+        console.log("Ticket booked successfully");
+        resolve();
+    });
+}
+
+async function bookTicket() {
+    try {
+        await checkSeat();
+        await payment();
+        await ticketConfirm();
+    }
+    catch(error) {
+        console.log(error);
+    }
+}
+
+bookTicket();
